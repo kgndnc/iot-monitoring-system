@@ -1,0 +1,31 @@
+1. POST /sensors: Register a new sensor with its metadata.
+2. POST /data: Submit sensor data to the system.
+3. GET /data/{sensor_id}: Retrieve data from a specific sensor.
+4. GET /data?start_date={start_date}&end_date={end_date}: Retrieve data within a
+specified date range.
+5. GET /sensors/{sensor_id}: Retrieve information about a specific sensor.
+6. GET /sensors/{sensor_id}/status: Check the status of a sensor (online/offline).
+7. POST /process: Initiate data processing for a specific set of sensors.
+8. GET /analytics/{metric}: Retrieve analytics or aggregated data for a specific metric.
+9. GET /alerts: Retrieve alerts for abnormal sensor readings.
+10. GET /config: Retrieve system configuration settings.
+11. PUT /config: Update system configuration settings.
+
+
+/sensors:
+  1, 5, 6
+
+/data:
+  2, 3, 4
+
+/process:
+  7
+
+/analytics:
+  8
+
+/alerts:
+  9
+
+/config:
+  10, 11
