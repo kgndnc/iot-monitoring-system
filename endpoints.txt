@@ -29,3 +29,7 @@ specified date range.
 
 /config:
   10, 11
+
+
+post data 
+  you have to provide sensor_id
