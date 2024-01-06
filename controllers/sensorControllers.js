@@ -1,15 +1,43 @@
-// controllers/sensorController.js
-
-const sensors = [{ id: 1, name: 'dummy' }]
-
 // @method  POST
 // @route   /sensors
 // @access  public
+
+const Sensor = require('../models/sensorModel')
+
 // @desc    Register a new sensor with its metadata.
-const registerSensor = (req, res) => {
-	const { sensorId, metadata } = req.body
-	sensors.push({ id: sensorId, metadata })
-	res.status(201).json({ message: 'Sensor registered successfully' })
+const registerSensor = async (req, res) => {
+	const { metadata } = req.body
+	console.log({ metadata })
+
+	let newSensor
+
+	try {
+		newSensor = await Sensor.create(metadata)
+	} catch (err) {
+		console.error('There was an error\n', err)
+
+		res.status(400).json({
+			message: `Error: Sensor could not be registered`,
+			error: err.message,
+		})
+
+		return
+	}
+
+	newSensor
+		.save({ validateBeforeSave: true })
+		.then(() => {
+			console.log('Document inserted successfully')
+		})
+		.catch(err => {
+			console.error('Error inserting document:', err)
+		})
+
+	const designatedId = newSensor.get('sensor_id')
+
+	res
+		.status(201)
+		.json({ message: `Sensor registered successfully with id ${designatedId}` })
 }
 
 // @method  GET
