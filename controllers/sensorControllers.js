@@ -44,9 +44,22 @@ const registerSensor = async (req, res) => {
 // @route   /sensors/:sensor_id
 // @access  public
 // @desc    Retrieve information about a specific sensor
-const getSensorInfo = (req, res) => {
+const getSensorInfo = async (req, res) => {
 	const { sensor_id: sensorId } = req.params
-	const sensor = sensors.find(s => s.id === Number(sensorId))
+
+	let sensor
+
+	try {
+		sensor = await Sensor.findById(sensorId).exec()
+	} catch (err) {
+		console.error('There was an error\n', err)
+
+		res.status(400).json({
+			error: err.message,
+		})
+
+		return
+	}
 
 	if (sensor) {
 		res.status(200).json(sensor)
@@ -59,10 +72,30 @@ const getSensorInfo = (req, res) => {
 // @route   /sensors/:sensor_id/status
 // @access  public
 // @desc    Check the status of a sensor (online/offline)
-const checkSensorStatus = (req, res) => {
-	const { sensorId } = req.params
+const checkSensorStatus = async (req, res) => {
+	const { sensor_id: sensorId } = req.params
 	// Implement logic to check the status of the sensor (online/offline)
-	res.json({ status: 'online' })
+
+	console.log({ sensorId })
+
+	let sensor
+
+	try {
+		sensor = await Sensor.findById(sensorId).exec()
+	} catch (err) {
+		console.error('There was an error\n', err)
+
+		res.status(400).json({
+			error: err.message,
+		})
+		return
+	}
+
+	if (sensor) {
+		res.status(200).json({ status: sensor.status })
+	} else {
+		res.status(404).json({ msg: 'Resource not found' })
+	}
 }
 
 module.exports = { registerSensor, checkSensorStatus, getSensorInfo }
