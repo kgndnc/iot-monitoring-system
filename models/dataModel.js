@@ -8,6 +8,10 @@ const dataSchema = new mongoose.Schema(
 			ref: 'Sensor',
 		},
 		data: { type: mongoose.Schema.Types.Mixed, required: true },
+		_data: new mongoose.Schema({
+			metric: mongoose.Schema.Types.String,
+			measurement: mongoose.Schema.Types.Number,
+		}),
 	},
 	{
 		timestamps: true,

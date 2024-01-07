@@ -49,6 +49,7 @@ const getSensorData = async (req, res) => {
 
 	console.log({ sensorId })
 
+	/* include metric (Temperature), and measurement */
 	let data
 
 	try {

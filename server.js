@@ -9,8 +9,8 @@ const mongoose = require('mongoose')
 // Connect to MongoDB
 mongoose
 	// username:password@host:port/
-	.connect('mongodb://root:example@127.0.0.1:27017/iot', {
-		// .connect('mongodb://root:example@mongo:27017/iot', {
+	.connect('mongodb://root:example@127.0.0.1:27017/iot-monitoring-system', {
+		// .connect('mongodb://root:example@mongo:27017/iot-monitoring-system', {
 		authSource: 'admin',
 	})
 	.then(() => {

@@ -33,3 +33,15 @@ specified date range.
 
 post data 
   you have to provide sensor_id
+
+
+
+// @method  GET
+// @route   /data/:sensor_id
+// @access  public
+// @desc    Retrieve data from a specific sensor
+
+payload => { sensor_id, data: { metric: string, measurement: float } } 
+
+
+7. POST /process: Initiate data processing for a specific set of sensors.
