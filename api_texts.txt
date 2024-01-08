@@ -14,3 +14,27 @@ payload
     }
 }
 ---
+
+POST /data
+
+payload
+---
+{
+  "sensor_id": "659baa9fb031907354fbad88",
+  "data": {
+    "metric": "Celsius",
+    "measurement": -1.2,
+    "type": "Temperature"
+  }
+}
+---
+
+
+POST /process
+
+payload
+---
+{
+  "sensor_type": "Temperature"
+}
+---
