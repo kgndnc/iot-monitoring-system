@@ -1,0 +1,16 @@
+POST /sensors
+
+payload
+---
+{
+    "metadata": {
+        "location": {
+            "latitude": 32.1,
+            "longtitude": -42.842
+        },
+        "sensor_type": "Temperature",
+        "unit_of_measurement": "Celsius",
+        "status": "Offline"
+    }
+}
+---
