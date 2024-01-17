@@ -17,7 +17,7 @@ const dataSchema = new mongoose.Schema(
 		),
 	},
 	{
-		timestamps: true,
+		timestamps: { createdAt: true, updatedAt: false },
 		versionKey: false,
 	}
 )
