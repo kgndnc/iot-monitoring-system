@@ -1,15 +1,15 @@
 # Use root/example as user/password credentials
-version: "3.1"
+version: '3.1'
 
 services:
-  app:
-    image: node-app
-    ports:
-      - 3000:3000
-
-    depends_on:
-      mongo:
-        condition: service_healthy
+  #   app:
+  #     image: node-app
+  #     ports:
+  #       - 3000:3000
+  #
+  #     depends_on:
+  #       mongo:
+  #         condition: service_healthy
 
   mongo:
     image: mongo
@@ -52,3 +52,4 @@ services:
 
 volumes:
   mongodbdata:
+

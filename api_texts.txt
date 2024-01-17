@@ -38,3 +38,26 @@ payload
   "sensor_type": "Temperature"
 }
 ---
+
+
+GET /alerts
+
+payload
+---
+empty: give all alerts
+
+or
+
+{
+  "type": "Temperature"
+}
+---
+
+
+---
+GET /data?start_date={start_date}&end_date={end_date}
+
+Get data for specified range
+
+same for /alerts
+---

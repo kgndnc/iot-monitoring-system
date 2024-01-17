@@ -45,3 +45,8 @@ payload => { sensor_id, data: { metric: string, measurement: float } }
 
 
 7. POST /process: Initiate data processing for a specific set of sensors.
+
+
+
+
+TODO: add other types of data and sensors as well (Humidity, Light, Noise)
