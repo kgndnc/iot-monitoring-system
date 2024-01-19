@@ -46,10 +46,13 @@ const processData = async (req, res) => {
 
 				// Check if it exists
 				const doesAlertExist = await Alert.exists({
-					'nonOptimalRecording.data._id': eachEntry.data._id,
+					'nonOptimalRecording._id': eachEntry._id,
 				})
 
-				if (doesAlertExist) return
+				if (doesAlertExist) {
+					console.log('Alert exists. Returning...', doesAlertExist)
+					return
+				}
 
 				// Add to alert
 				const new_alert = await Alert.create({
@@ -73,4 +76,3 @@ const processData = async (req, res) => {
 }
 
 module.exports = { processData }
-
